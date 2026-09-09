@@ -1,0 +1,6 @@
+{
+  "name": "Imax Dent",
+  "description": "Consultorio dental en Guayaquil. Ortodoncia desde $25, limpiezas, resinas, prótesis y extracciones con atención cercana y accesible. Agenda tu valoración por WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

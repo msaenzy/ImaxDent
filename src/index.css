@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Sora", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --color-brand-bg: #FAF9F6;
+  --color-brand-text: #12233D;
+  --color-brand-navy: #1B3A63;
+  --color-brand-navy-dark: #122845;
+  --color-brand-navy-light: #244C80;
+  --color-brand-gold: #C89B3C;
+  --color-brand-gold-hover: #B5882E;
+  --color-brand-gold-light: #F7EEDB;
+}
+
+@layer base {
+  body {
+    background-color: #FAF9F6;
+    color: #12233D;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: #12233D;
+  }
+}
+
+/* Animations that are purely additive so content is visible even without JS */
+.reveal-fade-scale {
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-scale.is-hidden {
+  opacity: 0;
+  transform: scale(0.96) translateY(20px);
+}
+
+.reveal-fade-scale.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.reveal-slide-left {
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-slide-left.is-hidden {
+  opacity: 0;
+  transform: translateX(-36px);
+}
+
+.reveal-slide-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-slide-right {
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-slide-right.is-hidden {
+  opacity: 0;
+  transform: translateX(36px);
+}
+
+.reveal-slide-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-stagger-item {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-stagger-item.is-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal-stagger-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Continuous marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-fade-scale,
+  .reveal-slide-left,
+  .reveal-slide-right,
+  .reveal-stagger-item {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
+
